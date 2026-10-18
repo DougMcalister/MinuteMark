@@ -1,0 +1,16 @@
+import django.db.models.deletion
+from django.conf import settings
+from django.db import migrations, models
+class Migration(migrations.Migration):
+    initial = True
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
+    operations = [
+        migrations.CreateModel(name="Workspace", fields=[("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")), ("created_at", models.DateTimeField(auto_now_add=True)), ("name", models.CharField(max_length=120)), ("owner", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL))]),
+        migrations.CreateModel(name="Membership", fields=[("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")), ("role", models.CharField(choices=[("owner", "Owner"), ("admin", "Admin"), ("member", "Member")], default="member", max_length=10)), ("joined_at", models.DateTimeField(auto_now_add=True)), ("user", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="memberships", to=settings.AUTH_USER_MODEL)), ("workspace", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="memberships", to="tracking.workspace"))]),
+        migrations.AddField(model_name="workspace", name="members", field=models.ManyToManyField(related_name="workspaces", through="tracking.Membership", to=settings.AUTH_USER_MODEL)),
+        migrations.CreateModel(name="Project", fields=[("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")), ("created_at", models.DateTimeField(auto_now_add=True)), ("name", models.CharField(max_length=120)), ("color", models.CharField(default="#7c3aed", max_length=7)), ("archived", models.BooleanField(default=False)), ("owner", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)), ("workspace", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="projects", to="tracking.workspace"))], options={"ordering": ["name"]}),
+        migrations.CreateModel(name="TimeEntry", fields=[("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")), ("created_at", models.DateTimeField(auto_now_add=True)), ("description", models.CharField(blank=True, max_length=255)), ("start", models.DateTimeField()), ("stop", models.DateTimeField(blank=True, null=True)), ("billable", models.BooleanField(default=False)), ("owner", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)), ("project", models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name="entries", to="tracking.project")), ("workspace", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="entries", to="tracking.workspace"))], options={"ordering": ["-start"]}),
+        migrations.AddConstraint(model_name="membership", constraint=models.UniqueConstraint(fields=("workspace", "user"), name="unique_workspace_member")),
+        migrations.AddConstraint(model_name="project", constraint=models.UniqueConstraint(fields=("workspace", "name"), name="unique_project_name_per_workspace")),
+        migrations.AddIndex(model_name="timeentry", index=models.Index(fields=["owner", "start"], name="tracking_t_owner_i_767e35_idx")),
+    ]

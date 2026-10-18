@@ -1,0 +1,25 @@
+
+> chrona-web@0.1.0 dev
+> next dev --hostname 127.0.0.1
+
+▲ Next.js 16.3.4 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+✓ Ready in 280ms
+✓ Running next.config.ts took 523ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+✓ Generated AGENTS.md and CLAUDE.md for AI agents. Set `agentRules: false` in next.config to disable.
+ GET / 200 in 1138ms (next.js: 1066ms, application-code: 73ms)
+ GET / 200 in 16ms (next.js: 2ms, application-code: 14ms)
+ GET / 200 in 22ms (next.js: 4ms, application-code: 19ms)
+ GET / 200 in 19ms (next.js: 3ms, application-code: 16ms)
+ GET / 200 in 18ms (next.js: 2ms, application-code: 15ms)
+ GET / 200 in 16ms (next.js: 1.7ms, application-code: 14ms)
+ GET / 200 in 13ms (next.js: 1.6ms, application-code: 11ms)
+ GET / 200 in 16ms (next.js: 2ms, application-code: 14ms)
+ GET / 200 in 18ms (next.js: 3ms, application-code: 15ms)

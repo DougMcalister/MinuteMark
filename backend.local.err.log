@@ -1,0 +1,17 @@
+F:\TimeTracking\.venv\Lib\site-packages\django\core\handlers\base.py:61: UserWarning: No directory at: F:\TimeTracking\backend\staticfiles\
+  mw_instance = middleware(adapted_handler)
+[04/Sep/2026 14:10:47] "GET /health/ HTTP/1.1" 200 15
+[04/Sep/2026 14:10:47] "OPTIONS /api/workspaces/ HTTP/1.1" 200 0
+[04/Sep/2026 14:10:47,741] - Broken pipe from ('127.0.0.1', 58426)
+[04/Sep/2026 14:11:03] "OPTIONS /api/workspaces/ HTTP/1.1" 200 0
+[04/Sep/2026 14:11:03] "OPTIONS /api/workspaces/ HTTP/1.1" 200 0
+F:\TimeTracking\.venv\Lib\site-packages\rest_framework\pagination.py:207: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'tracking.models.Workspace'> QuerySet.
+  paginator = self.django_paginator_class(queryset, page_size)
+[04/Sep/2026 14:11:03] "GET /api/workspaces/ HTTP/1.1" 200 294
+[04/Sep/2026 14:11:03] "GET /api/workspaces/ HTTP/1.1" 200 294
+[04/Sep/2026 14:11:03] "OPTIONS /api/projects/ HTTP/1.1" 200 0
+[04/Sep/2026 14:11:03] "OPTIONS /api/entries/ HTTP/1.1" 200 0
+[04/Sep/2026 14:11:03] "GET /api/entries/ HTTP/1.1" 200 52
+[04/Sep/2026 14:11:03] "GET /api/projects/ HTTP/1.1" 200 52
+[04/Sep/2026 14:11:03] "GET /api/entries/ HTTP/1.1" 200 52
+[04/Sep/2026 14:11:03] "GET /api/projects/ HTTP/1.1" 200 52
