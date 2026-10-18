@@ -1,6 +1,6 @@
-# Chrona
+# MinuteMark
 
-Chrona is a private, small-team time tracker inspired by the useful core of Toggl: a one-click timer, project attribution, recent entries, weekly totals, and lightweight reporting. It is intentionally a focused project tool rather than a public SaaS product.
+MinuteMark is a private, small-team time tracker inspired by the useful core of Toggl: a one-click timer, project attribution, recent entries, weekly totals, and lightweight reporting. It is intentionally a focused project tool rather than a public SaaS product.
 
 ## Beta scope
 
@@ -98,8 +98,8 @@ Install Docker and Azure CLI, sign in, and choose a subscription. Pick globally 
 ```bash
 az login
 az account set --subscription "<subscription-id>"
-az group create --name chrona-prod-rg --location australiaeast
-az acr create --resource-group chrona-prod-rg --name <uniqueRegistry> --sku Basic
+az group create --name MinuteMark-prod-rg --location australiaeast
+az acr create --resource-group MinuteMark-prod-rg --name <uniqueRegistry> --sku Basic
 az acr login --name <uniqueRegistry>
 ```
 
@@ -108,10 +108,10 @@ az acr login --name <uniqueRegistry>
 `NEXT_PUBLIC_API_URL` is embedded in the frontend bundle at build time. The stable approach is to deploy infrastructure once with a temporary web image, note the API hostname, then rebuild the web image with that URL. Alternatively add a custom API domain first.
 
 ```bash
-docker build -t <registry>.azurecr.io/chrona-api:1.0.0 backend
-docker build --build-arg NEXT_PUBLIC_API_URL=https://api.example.com/api -t <registry>.azurecr.io/chrona-web:1.0.0 frontend
-docker push <registry>.azurecr.io/chrona-api:1.0.0
-docker push <registry>.azurecr.io/chrona-web:1.0.0
+docker build -t <registry>.azurecr.io/MinuteMark-api:1.0.0 backend
+docker build --build-arg NEXT_PUBLIC_API_URL=https://api.example.com/api -t <registry>.azurecr.io/MinuteMark-web:1.0.0 frontend
+docker push <registry>.azurecr.io/MinuteMark-api:1.0.0
+docker push <registry>.azurecr.io/MinuteMark-web:1.0.0
 ```
 
 ### 3. Provision resources
@@ -120,15 +120,15 @@ Use a randomly generated PostgreSQL password. Bicep marks it secure, but prefer 
 
 ```bash
 az deployment group create \
-  --resource-group chrona-prod-rg \
+  --resource-group MinuteMark-prod-rg \
   --template-file infra/main.bicep \
-  --parameters prefix=chrona-prod \
+  --parameters prefix=MinuteMark-prod \
                postgresAdminPassword='<strong-generated-password>' \
                registryServer='<registry>.azurecr.io' \
                registryUsername='<registry-user>' \
                registryPassword='<registry-password>' \
-               apiImage='<registry>.azurecr.io/chrona-api:1.0.0' \
-               webImage='<registry>.azurecr.io/chrona-web:1.0.0'
+               apiImage='<registry>.azurecr.io/MinuteMark-api:1.0.0' \
+               webImage='<registry>.azurecr.io/MinuteMark-web:1.0.0'
 ```
 
 The template configures the supplied registry credentials on each Container App. For a more mature environment, replace those credentials with user-assigned managed identities and `AcrPull` role assignments. Restrict PostgreSQL to private networking once the proof deployment is validated; `AllowAzureServices` is convenient for beta but broader than ideal.
