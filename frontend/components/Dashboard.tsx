@@ -239,10 +239,10 @@ export function Dashboard () {
                             {adding === true &&(
                                 <div>
                                     <label>
+                                        {/* add value location */}
                                         <input 
                                             type="date"
                                             name="start-date"
-                                            value={}
                                         />
                                     </label>
                                 </div>

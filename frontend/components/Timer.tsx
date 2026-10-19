@@ -7,10 +7,13 @@ export const formatDuration = ( seconds:number ) => {
     const h = Math.floor(seconds/3600),
     m = Math.floor(seconds%3600/60),
     s = seconds % 60;
+
+    const hour = String(h).padStart(2,"0")
+    const min = String(m).padStart(2,"0")
+    const sec = String(s).padStart(2,"0")
+
     return (
-        `${ String(h).padStart(2,"0") } : 
-        ${ String(m).padStart(2,"0") } :
-        ${ String(s).padStart(2,"0") }`
+        `${hour}:${min}:${sec}`
     )
 };
 
