@@ -11,4 +11,7 @@ __pycache__/
 db.sqlite3
 staticfiles/
 infra/
-*.log
+frontend.local.log
+frontend.local.err.log
+backend.local.log
+backend.local.err.log
