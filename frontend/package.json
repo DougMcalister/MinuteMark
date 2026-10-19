@@ -3,29 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev":"next dev",
-    "build":"next build",
-    "start":"next start",
-    "test":"vitest run"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@heroicons/react":"^2.2.0",
-    "next":"16.3.4",
-    "react":"19.2.0",
-    "react-dom":"19.2.0"
+    "@heroicons/react": "^2.2.0",
+    "next": "^16.4.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react":"^4.3.4",
-    "@testing-library/jest-dom":"^6.6.3",
-    "@testing-library/react":"^16.2.0",
-    "@types/node":"^22.13.10",
-    "@types/react":"^19.0.10",
-    "@types/react-dom":"^19.0.4",
-    "autoprefixer":"^10.4.21",
-    "jsdom":"^26.0.0",
-    "postcss":"^8.5.3",
-    "tailwindcss":"^3.4.17",
-    "typescript":"^5.8.2",
-    "vitest":"^3.0.8"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "jsdom": "^26.0.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.8.2",
+    "vitest": "^5.0.5"
   }
 }
